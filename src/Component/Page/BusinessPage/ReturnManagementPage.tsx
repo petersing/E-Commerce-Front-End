@@ -99,7 +99,7 @@ const ReturnManagementPage = () => {
     const [Page, setPage] = useState<number>(1);
     const [ReturnData, setReturnData] = useState<ReturnItem[]>([]);
     const [ReturnCount, setReturnCount] = useState<number>(0);
-    const [GetReturnDataFunction] = useLazyQuery<{ReturnProduct: {ReturnProduct: ReturnItem[], Count: number}}>(GetReturnData) 
+    const [GetReturnDataFunction] = useLazyQuery<{ReturnProduct: {ReturnProduct: ReturnItem[], Count: number}}>(GetReturnData, {fetchPolicy: 'no-cache'}) 
     const [OpenCustomerService, setOpenCustomerService] = useState<boolean>(true);
     const [ChatBuyer, setChatBuyer] = useState<string|null>(null)
     const {t} = useTranslation()

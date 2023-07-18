@@ -183,7 +183,7 @@ const OrderItem = (props: {keys: string|number, order: Order_Object, setOpen: Fu
 }
 
 const OrderPage = () => {
-  const [GetOrderListFunction] = useLazyQuery<{PaymentList: {Payments: Order_Object[], Count: number}}>(GetPaymentData, {fetchPolicy: 'network-only'})
+  const [GetOrderListFunction] = useLazyQuery<{PaymentList: {Payments: Order_Object[], Count: number}}>(GetPaymentData, {fetchPolicy: 'no-cache'})
   const [OrderList, setOrderList]= useState<Order_Object[]>([])
   const [OrderListCount, setOrderListCount] = useState<number>(0)
   const [Page, setPage] = useState<number>(1)

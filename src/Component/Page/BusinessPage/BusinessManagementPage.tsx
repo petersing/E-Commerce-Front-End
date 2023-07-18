@@ -74,7 +74,7 @@ const ProductItem = (props: {item: Management_Product_Object, ProductIndex: numb
 }
 
 const BusinessManagementPage = (props: {User: User_Object|undefined}) => {
-  const [ProductDataFunction] = useLazyQuery<{PersonalProduct: {Product: any, Count: number}}>(GetUserProduct,{fetchPolicy: 'network-only'})
+  const [ProductDataFunction] = useLazyQuery<{PersonalProduct: {Product: any, Count: number}}>(GetUserProduct,{fetchPolicy: 'no-cache'})
   const [ProductData , setProductData] = useState<Management_Product_Object[]>([])
   const [ProductCount, setProductCount] = useState<number>(0)
   const [Page, setPage] = useState<number>(1)

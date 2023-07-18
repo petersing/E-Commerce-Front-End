@@ -92,7 +92,7 @@ const OrderItem = (props: {OrderItem: Seller_Order_List_Object, setChatBuyer: Fu
 }
 
 const OrderManagementPage = () => {
-    const [GetOrderDataFunction] = useLazyQuery<{OrderListSeller: {Orders: Seller_Order_List_Object[], Count:number}}>(GetOrderData, {fetchPolicy: 'network-only'});
+    const [GetOrderDataFunction] = useLazyQuery<{OrderListSeller: {Orders: Seller_Order_List_Object[], Count:number}}>(GetOrderData, {fetchPolicy: 'no-cache'});
     const [OrderList, setOrderList] = useState<Seller_Order_List_Object[]>([]);
     const [OrderListCount, setOrderListCount] = useState<number>(0);
     const [Page, setPage] = useState<number>(1);
