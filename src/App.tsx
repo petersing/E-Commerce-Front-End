@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { Account_API } from './API/Request';
 import {ParseCookies} from'./Component/Public_Data/Public_Application'
-import { gql, useLazyQuery } from '@apollo/client';
+import { gql, useApolloClient, useLazyQuery, useQuery } from '@apollo/client';
 import { User_Object } from './Component/Public_Data/Interfaces';
 import BusinessManagementNavBar from './Component/AddComponect/Navbar/BusinessManagementNavBar';
 import UnauthorizedPage from './Component/Page/StatusPage/401Unauthorized';
@@ -31,11 +31,13 @@ import PrivacyPolicyPage from './Component/Page/HelpingPage/PrivacyPolicyPage';
 import TermsofUsePage from './Component/Page/HelpingPage/TermsofUsePage';
 import { useTranslation } from 'react-i18next';
 import SuccessPaymentPage from './Component/Page/HelpingPage/SuccessPaymentPage';
+import PrivacyCenter from './Component/Page/SettingPage/PrivacyCenter';
+import {Buffer} from "buffer"
 
-const PrivateUserData = gql`
+const GetPrivateUserData = gql`
 query PrivateUserData{
     PrivateUserData{
-        id, username, isSubscriber, email, dateJoined, RemainPublish, ProfileIcon,
+        id, username, isSubscriber, email, dateJoined, RemainPublish, ProfileIcon, AdsToken, Preference
         Subscribe{SubscribeDate, SubscribeEnd, SubscribePlan}
     }
 }
@@ -128,12 +130,19 @@ const NavBarWithComponent = (props: {loading: boolean, data: User_Object| undefi
 
 const App : React.FC = () =>{
   const [cookies, setCookie, removeCookie] = useCookies();
-  const [GetUserData, { data , refetch, loading}] = useLazyQuery<{PrivateUserData: User_Object}>(PrivateUserData);
+  const [GetUserData, { data , refetch, loading}] = useLazyQuery<{PrivateUserData: User_Object}>(GetPrivateUserData);
+  
   const {i18n, ready} = useTranslation()
 
   function RefetchUserData(){
     refetch({access: cookies.access});
   }
+
+  useEffect(() =>{
+    if (cookies['access']){
+      GetUserData()
+    }
+  }, [GetUserData])
 
   useEffect(() =>{
     if (cookies['Language']){
@@ -148,10 +157,6 @@ const App : React.FC = () =>{
   useEffect(() => {
     Initial_Information()
   }, [])
-
-  useEffect(() =>{
-    GetUserData() 
-  }, [GetUserData])
 
   useEffect(() => {
     function CookiesFunction(){
@@ -196,6 +201,7 @@ const App : React.FC = () =>{
             <Route path='/AccountInformation' element={<AccountInformationPage/>}/>
             <Route path='/AccountSetting' element={<AccountSetting UserData={data?.PrivateUserData} RefetchUserFunction={RefetchUserData}/>}/>
             <Route path='/SellerCenter' element={<SellerCenter UserData={data?.PrivateUserData} RefetchUserFunction={RefetchUserData}/>}/>
+            <Route path="/PrivacyCenter" element={<PrivacyCenter UserData={data?.PrivateUserData} RefetchUserFunction={RefetchUserData}/>}/>
             <Route path='/Address' element={<AddressSetting/>}/>
           </Route>
           <Route element={ManagementSystemRoute({loading: loading && !ready, data: data?.PrivateUserData})}>

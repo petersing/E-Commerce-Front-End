@@ -565,7 +565,13 @@
       "ResetPasswordFailure": "密碼重置失敗，請確認您之前的密碼",
       "ResetPasswordSame": "新密碼和確認密碼不一樣",
       "PaymentID": "付款編號",
-      "OrderCreatedTime": "訂單創建時間"
+      "OrderCreatedTime": "訂單創建時間",
+      "PrivacyCenter" : "隱私中心",
+      "PrivacyCenterStatement": "管理您的隱私設置",
+      "AdsID": "廣告 ID",
+      "AdsStatus": "廣告狀態",
+      "Prefernece": "偏好"
+
     },
     "Chat":{
       "BlockUser": "封鎖用戶",

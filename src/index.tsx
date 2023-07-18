@@ -7,6 +7,7 @@ import './i18n';
 import App from './App';
 import './App.css';
 
+
 createRoot(document.getElementById('root')!).render(<ApolloProvider client={GraphQL_Connect}>
                                                         <App/>
                                                     </ApolloProvider>)

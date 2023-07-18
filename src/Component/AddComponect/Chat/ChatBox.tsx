@@ -8,6 +8,7 @@ import { Chat_API } from '../../../API/Request';
 import { ChatDataContent } from './ChatComponent';
 import ImageIcon from '@mui/icons-material/Image';
 import { useTranslation } from 'react-i18next';
+import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 
 
 const GetChatData = gql`
@@ -110,7 +111,7 @@ const ChatBox = (props: {Target: string, onClose: Function}) => {
   }
 
   return (
-        <Box sx={{position: 'fixed', width: '500px', bottom: '3%', right: '3%', backgroundColor: 'rgb(250,250,250)',
+        <Box sx={{position: 'fixed', width: '500px', bottom: '3%', right: '3%', backgroundColor: 'rgb(250,250,250)', zIndex: 9999,
                   border: 'solid 1px rgb(220,220,220)', borderRadius: '5px', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
             <div>
               <IconButton sx={{position: 'absolute', right: '0%'}} onClick={() => props.onClose(null)}>
@@ -123,6 +124,9 @@ const ChatBox = (props: {Target: string, onClose: Function}) => {
             </div>  
             {AlertMessage && <Alert sx={{position: 'absolute', top: '7.5%', width: '60%', zIndex: '999'}} severity="error">{AlertMessage}</Alert>}
             <Paper sx={{width: '95%', height: '500px', mt: '15px', overflowY: "scroll"}} onScroll={Scroll} ref={bottomRef} >
+              <div style={{display: 'flex', justifyContent: 'center', marginTop: '5px'}}>
+                  <Chip icon={<LightbulbCircleIcon />} onClick={() => {window.location.assign("/Help/Privacy")}} label={"Note that all chats will be recorded"} sx={{backgroundColor: 'rgb(210, 200,100)', mb: '5px', ':hover': {opacity: 0.5, cursor: 'pointer'}}}/>
+              </div>
               <ChatDataContent ChatData={ChatData} previous={previous} Target={Target} DeleteMessageFunction={DeleteMessageFunction} From={'Prev'}/>
               <ChatDataContent ChatData={ResponseData} previous={previous} Target={Target} DeleteMessageFunction={DeleteMessageFunction} From={'Now'}/>
             </Paper>

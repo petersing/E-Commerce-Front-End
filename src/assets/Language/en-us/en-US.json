@@ -576,7 +576,12 @@
     "NewsPassword": "New Password",
     "ConfirmPassword": "Confirm Password",
     "ResetPasswordFailure": "Password Reset Failed, please confirm your previous password",
-    "ResetPasswordSame": "New Password and Confirm Password are not the same"
+    "ResetPasswordSame": "New Password and Confirm Password are not the same",
+    "PrivacyCenter" : "Privacy Center",
+    "PrivacyCenterStatement": "Manage your privacy settings",
+    "AdsID": "Aadvertisement ID",
+    "AdsStatus": "Advertisement Status",
+    "Prefernece": "Prefernece"
   },
   "Chat":{
     "BlockUser": "Block User",

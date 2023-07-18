@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, Avatar, List , ListItem, ListItemButton, ListItemText, Badge, ListItemAvatar, Divider, Alert, Menu, MenuItem, CircularProgress} from '@mui/material'
+import { Box, Typography, Paper, Avatar, List , ListItem, ListItemButton, ListItemText, Badge, ListItemAvatar, Divider, Alert, Menu, MenuItem, CircularProgress, Chip} from '@mui/material'
 import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { gql, useLazyQuery} from '@apollo/client';
 import { useCookies } from 'react-cookie';
@@ -9,6 +9,7 @@ import BlockIcon from '@mui/icons-material/Block';
 import FlagIcon from '@mui/icons-material/Flag';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useTranslation } from 'react-i18next';
+import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 
 const GetChatData = gql`
 query ChatRecord($target: String!, $Start: Int!, $End: Int!) {
@@ -191,6 +192,9 @@ const ChatPage = () => {
                     {AlertMessage && <Alert sx={{position: 'absolute', top: '20%', width: '60%', zIndex: '999'}} severity="error">{AlertMessage}</Alert>}
                     {Target&& !Finish && <CircularProgress  sx={{ position: 'absolute', left: '50%', top: '50%', }} color="secondary"/>}
                     <Paper sx={{width: '100%', height: '84%', overflowY: "scroll", backgroundColor: 'rgb(252,252,252)'}} onScroll={Scroll} ref={bottomRef}>
+                        <div style={{display: 'flex', justifyContent: 'center', marginTop: '5px'}}>
+                            <Chip icon={<LightbulbCircleIcon />} onClick={() => {window.location.assign("/Help/Privacy")}} label={"Note that all chats will be recorded"} sx={{backgroundColor: 'rgb(210, 200,100)', mb: '5px', ':hover': {opacity: 0.5, cursor: 'pointer'}}}/>
+                        </div>
                         <ChatDataContent ChatData={ChatData} previous={previous} Target={Target} DeleteMessageFunction={DeleteMessageFunction} From='Prev'/>
                         <ChatDataContent ChatData={ResponseData} previous={previous} Target={Target} DeleteMessageFunction={DeleteMessageFunction} From='Now'/>
                     </Paper>

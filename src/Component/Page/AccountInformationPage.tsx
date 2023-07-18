@@ -3,6 +3,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 
 const AccountInformationPage = () => {
@@ -11,7 +12,8 @@ const AccountInformationPage = () => {
   const ItemList = [{Name: t("AccountInformation.Order"), content: t("AccountInformation.OrderStatement"), Icon: InventoryIcon, link: '/Order'}, 
                   {Name: t("AccountInformation.Address"), content: t("AccountInformation.AddressStatement"), Icon: HomeIcon, link: '/Address'}, 
                   {Name: t("AccountInformation.LoginAndSecurity"), content: t("AccountInformation.LoginAndSecurityStatement"), Icon: ContactMailIcon, link: '/AccountSetting'},
-                  {Name: t("AccountInformation.SellerCenter"), content:  t("AccountInformation.SellerCenterStatement"), Icon: StorefrontIcon, link: '/SellerCenter'}]
+                  {Name: t("AccountInformation.SellerCenter"), content:  t("AccountInformation.SellerCenterStatement"), Icon: StorefrontIcon, link: '/SellerCenter'},
+                  {Name: t("AccountInformation.PrivacyCenter"), content:  t("AccountInformation.PrivacyCenterStatement"), Icon: LockOpenIcon, link: '/PrivacyCenter'}]
 
   return (
     <div style={{marginTop: '120px', width: '50%', marginLeft: 'auto', marginRight: 'auto', minWidth: '700px'}}>
