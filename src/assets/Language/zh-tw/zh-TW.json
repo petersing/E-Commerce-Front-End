@@ -42,7 +42,7 @@
       "Food": "食物",
       "Man": "男性",
       "Lady": "女性",
-      "Childern": "兒童",
+      "Children": "兒童",
       "Furniture": "家具",
       "Electronic": "電子產品"
     },
@@ -314,7 +314,7 @@
         "Electronic": "電子產品",
         "Man": "男人",
         "Lady": "女士",
-        "Childern": "孩子",
+        "Children": "孩子",
         "Food": "食物",
         "Lenovo": "聯想",
         "HP": "惠普",

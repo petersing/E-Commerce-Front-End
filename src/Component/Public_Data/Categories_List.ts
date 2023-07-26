@@ -19,7 +19,7 @@ const Categories_List = () =>{
             {Category: t('Selection.Food'), Image: LocalPizzaIcon, SearchKey: 'Food'},
             {Category: t('Selection.Man'), Image: ManIcon, SearchKey: "Man"},
             {Category: t('Selection.Lady'), Image: GirlIcon, SearchKey: "Lady"},
-            {Category: t('Selection.Childern'), Image: ChildCareIcon, SearchKey: "Childern"},
+            {Category: t('Selection.Children'), Image: ChildCareIcon, SearchKey: "Children"},
             {Category: t('Selection.Furniture'), Image: WeekendIcon, SearchKey: "Furniture"},
             {Category: t('Selection.Electronic'), Image: BlenderIcon, SearchKey: "Electronic"}
         
@@ -35,7 +35,7 @@ const Categories_Data: {[key: string]: any} = {
     Electronic: {"Blender": {}, "Camera": {}, "Laptop": {}, "TV": {}, "Speaker": {}, "Microwave": {}},
     Man: {"T-shirt": {}, 'Shirt': {}, 'Pants': {}, "Shoes": {}, "Bag": {}, "Hat": {}, "Dress": {}, "Skirt": {}, "Jacket": {}, "Coat": {}, "Sweater": {}, "Sweatshirt": {}, "Blouse": {}, "Jeans": {}},
     Lady: {"T-shirt": {}, 'Shirt': {}, 'Pants': {}, "Shoes": {}, "Bag": {}, "Hat": {}, "Dress": {}, "Skirt": {}, "Jacket": {}, "Coat": {}, "Sweater": {}, "Sweatshirt": {}, "Blouse": {}, "Jeans": {} },
-    Childern: {"T-shirt": {}, 'Shirt': {}, 'Pants': {}, "Shoes": {}, "Bag": {}, "Hat": {}, "Dress": {}, "Skirt": {}, "Jacket": {}, "Coat": {}, "Sweater": {}, "Sweatshirt": {}, "Blouse": {}, "Jeans": {}},
+    Children: {"T-shirt": {}, 'Shirt': {}, 'Pants': {}, "Shoes": {}, "Bag": {}, "Hat": {}, "Dress": {}, "Skirt": {}, "Jacket": {}, "Coat": {}, "Sweater": {}, "Sweatshirt": {}, "Blouse": {}, "Jeans": {}},
     Food: {'Pizza':{}, "Chicken": {}, "Beef": {}, "Pork": {}, "Fish": {}, "Rice": {}, "Noodle": {}, "Bread": {}, "Egg": {}, "Vegetable": {}, "Fruit": {}, "Drink": {}, "Snack": {}, "Dessert": {}}
 }
 

@@ -21,7 +21,6 @@
     "apexcharts": "^3.41.0",
     "apollo3-cache-persist": "^0.14.1",
     "axios": "^1.4.0",
-    "buffer": "^6.0.3",
     "graphql": "^16.7.1",
     "i18next": "^23.2.11",
     "i18next-http-backend": "^2.2.1",

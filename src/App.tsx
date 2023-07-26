@@ -32,7 +32,6 @@ import TermsofUsePage from './Component/Page/HelpingPage/TermsofUsePage';
 import { useTranslation } from 'react-i18next';
 import SuccessPaymentPage from './Component/Page/HelpingPage/SuccessPaymentPage';
 import PrivacyCenter from './Component/Page/SettingPage/PrivacyCenter';
-import {Buffer} from "buffer"
 
 const GetPrivateUserData = gql`
 query PrivateUserData{
@@ -46,7 +45,7 @@ query PrivateUserData{
 function Initial_Information(){
   console.clear()
   console.log("%cSTOP", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
-  console.log('(C) 2023 E-commerce\nBuild 20231004-2 (BETA)')
+  console.log('(C) 2023 E-commerce\nBuild 20231004-3 (BETA)')
   console.log("%cDon't Send Any Data to Console", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
 }
 
@@ -135,7 +134,7 @@ const App : React.FC = () =>{
   const {i18n, ready} = useTranslation()
 
   function RefetchUserData(){
-    refetch({access: cookies.access});
+    refetch();
   }
 
   useEffect(() =>{
@@ -163,6 +162,9 @@ const App : React.FC = () =>{
       const Cookies_List = ParseCookies(window.document.cookie);
       if(Cookies_List['refresh'] && !Cookies_List['access']){
         Account_API.Refresh_Token(Cookies_List['refresh'])
+        if (cookies['access']){
+          refetch()
+        }
       }else if(Cookies_List['access'] && !Cookies_List['refresh']){
         removeCookie('access', { path: '/' })
         removeCookie('refresh', { path: '/' })

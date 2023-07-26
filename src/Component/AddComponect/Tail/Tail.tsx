@@ -26,7 +26,7 @@ const Tail = () => {
                 </IconButton>
             </div>
             <div style={{display: 'flex', alignItems: 'center', marginTop:'15px'}}>
-                <Typography variant="body2" style={{color: 'rgb(220,220,220)'}}>Version: 1.0.1 Beta</Typography>
+                <Typography variant="body2" style={{color: 'rgb(220,220,220)'}}>Version: 1.0.2 Beta</Typography>
                 <Typography variant="body2" style={{color: 'rgb(220,220,220)', marginLeft: '10px'}}>Copyright © 2023 E-commerce-Tech.com. All Rights Reserved.</Typography>
             </div>
             <div style={{marginTop:'15px', display: 'flex', flexDirection: 'row', justifyContent: 'center', color: 'rgb(220,220,220)'}}>
