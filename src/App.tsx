@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { Account_API } from './API/Request';
 import {ParseCookies} from'./Component/Public_Data/Public_Application'
-import { gql, useApolloClient, useLazyQuery, useQuery } from '@apollo/client';
+import { gql, useLazyQuery} from '@apollo/client';
 import { User_Object } from './Component/Public_Data/Interfaces';
 import BusinessManagementNavBar from './Component/AddComponect/Navbar/BusinessManagementNavBar';
 import UnauthorizedPage from './Component/Page/StatusPage/401Unauthorized';
@@ -36,8 +36,9 @@ import PrivacyCenter from './Component/Page/SettingPage/PrivacyCenter';
 const GetPrivateUserData = gql`
 query PrivateUserData{
     PrivateUserData{
-        id, username, isSubscriber, email, dateJoined, RemainPublish, ProfileIcon, AdsToken, Preference
+        id, username, isSubscriber, email, dateJoined, RemainPublish, ProfileIcon, Preference
         Subscribe{SubscribeDate, SubscribeEnd, SubscribePlan}
+        Ads{id, Agreement, ConsentGlobalAds, ConsentPersonalAds, ConsentThirdPartyAds}
     }
 }
 `
@@ -141,7 +142,7 @@ const App : React.FC = () =>{
     if (cookies['access']){
       GetUserData()
     }
-  }, [GetUserData])
+  }, [GetUserData, cookies])
 
   useEffect(() =>{
     if (cookies['Language']){
@@ -178,7 +179,7 @@ const App : React.FC = () =>{
     const RefreshCookies = setInterval(() =>{CookiesFunction()}, 1000*60)
     return () => {clearInterval(RefreshCookies)}
 
-  },[setCookie, cookies, removeCookie])
+  },[setCookie, cookies, removeCookie, refetch])
 
   return(
     <Router>

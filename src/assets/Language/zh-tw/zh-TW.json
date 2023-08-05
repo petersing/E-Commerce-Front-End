@@ -570,7 +570,8 @@
       "PrivacyCenterStatement": "管理您的隱私設置",
       "AdsID": "廣告 ID",
       "AdsStatus": "廣告狀態",
-      "Prefernece": "偏好"
+      "Prefernece": "偏好",
+      "ChangeStatus": "更改狀態"
 
     },
     "Chat":{

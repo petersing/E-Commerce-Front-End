@@ -30,6 +30,7 @@ const ClientStatusMenu = (props: {user: User_Object}) => {
     function Logout(){
         document.cookie = "access=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "refresh=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "ads=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         window.location.reload();
         window.sessionStorage.clear();
     }

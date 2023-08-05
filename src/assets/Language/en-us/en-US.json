@@ -581,7 +581,8 @@
     "PrivacyCenterStatement": "Manage your privacy settings",
     "AdsID": "Aadvertisement ID",
     "AdsStatus": "Advertisement Status",
-    "Prefernece": "Prefernece"
+    "Prefernece": "Prefernece",
+    "ChangeStatus": "Change Status"
   },
   "Chat":{
     "BlockUser": "Block User",

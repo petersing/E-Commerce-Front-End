@@ -2,13 +2,13 @@ interface User_Object{
     id: string, 
     username: string, 
     isSubscriber: boolean, 
-    AdsToken: string,
     email: string, 
     dateJoined: string,
     RemainPublish: number,
     Preference: string[],
     Subscribe?: {SubscribeDate: string, SubscribeEnd: string, SubscribePlan: string},
     ProfileIcon: string;
+    Ads: {id: string, Agreement: boolean, ConsentGlobalAds: boolean, ConsentPersonalAds: boolean, ConsentThirdPartyAds: boolean}
 
 }
 

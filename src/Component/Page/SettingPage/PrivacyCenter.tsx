@@ -1,12 +1,12 @@
 import { Box, Button, Chip, List, ListItem, ListItemText, Typography } from '@mui/material'
 import { useState } from 'react'
-import SubscribeDialog from '../../Dialog/Setting/SubscribeDialog'
 import { User_Object } from '../../Public_Data/Interfaces'
 import { useTranslation } from 'react-i18next'
+import ChangeAdsStatusDialog from '../../Dialog/Setting/ChangeAdsStatusDialog'
 
 
 const PrivacyCenter = (props: {UserData: User_Object|undefined, RefetchUserFunction: Function}) => {
-    const [OpenSubscribe, setOpenSubscribe] = useState<number|null>(null)
+    const [OpenAdsDialog, setOpenAdsDialog] = useState<boolean>(false)
     const {t} = useTranslation()
 
     return (
@@ -15,18 +15,18 @@ const PrivacyCenter = (props: {UserData: User_Object|undefined, RefetchUserFunct
                 <Typography variant='h6'>{t("AccountInformation.SellerCenter")}</Typography>
                 <List sx={{border: '1px solid rgb(220,220,220)', borderRadius: '8px', mt: '10px'}}>
                     <ListItem>
-                        <ListItemText primary={t("AccountInformation.AdsID")} secondary={props.UserData?.AdsToken}/>
+                        <ListItemText primary={t("AccountInformation.AdsID")} secondary={props.UserData?.Ads.id}/>
                     </ListItem>
-                    <ListItem secondaryAction={<Button variant='contained' onClick={() => setOpenSubscribe(0)}>{props.UserData?.isSubscriber ? t("AccountInformation.RenewSubscribe"): t("AccountInformation.SubscribeNow")}</Button>}>
+                    <ListItem secondaryAction={<Button variant='contained' onClick={() => setOpenAdsDialog(true)}>{t("AccountInformation.ChangeStatus")}</Button>}>
                         <ListItemText primary={t("AccountInformation.AdsStatus")} secondary={"Consent to collect search and purchase data to enhance the shopping experience"}/>
                     </ListItem>
                     <ListItem>             
-                        <ListItemText primary={t("AccountInformation.Prefernece")} 
-                                      secondary={props.UserData?.Preference.map((item) => <Chip label={item} sx={{mr: '5px'}}/>)}/>
+                        <ListItemText disableTypography={true} primary={<Typography>{t("AccountInformation.Prefernece")}</Typography>} secondary={props.UserData?.Preference.map((item, K) => <Chip key={`Ads${K}`} label={item} sx={{mr: '5px', mt: '5px'}}/>)}/>
                     </ListItem>
+                    
                 </List>
             </Box>
-            {OpenSubscribe !== null && <SubscribeDialog Open={OpenSubscribe} Onclose={setOpenSubscribe} SubscribeData={props.UserData?.Subscribe} RefetchUserFunction={props.RefetchUserFunction}/>}
+            {props.UserData && OpenAdsDialog !== false && <ChangeAdsStatusDialog Open={OpenAdsDialog} Onclose={setOpenAdsDialog} AdsDb={props.UserData.Ads} RefetchUserFunction={props.RefetchUserFunction}/>}
         </>
     )
 }
