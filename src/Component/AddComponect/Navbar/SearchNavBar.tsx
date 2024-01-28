@@ -9,7 +9,7 @@ const SearchNavBar = () => {
     const [SearchInput, setSearchInput] = useState<string>('')
     const {t} = useTranslation()
         return (
-            <Box position='fixed' sx={{width: '100%', backgroundColor: 'rgb(245,245,245)', mt: '40px', zIndex: 5, height: '60px', minWidth: '700px', left: '0', top: '0', borderBottom: 'solid 1px rgb(240,240,240)'}}>
+            <Box position='absolute' sx={{width: '100%', backgroundColor: 'rgb(245,245,245)', mt: '40px', zIndex: 5, height: '60px', minWidth: '700px', left: '0', top: '0', borderBottom: 'solid 1px rgb(240,240,240)'}}>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', width: '70%', marginLeft: 'auto', marginRight: 'auto', marginTop: '7.5px'}}>
                     <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', width: '80%'}}>
                         <Typography variant='body2' sx={{color: 'rgb(50,50,50)', display: 'flex', flexDirection: 'row', alignItems: 'center', minWidth: '130px',

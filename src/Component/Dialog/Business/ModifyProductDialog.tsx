@@ -93,13 +93,14 @@ const ModifyProductDialog = (props: {Open: boolean, setOpen: React.Dispatch<Reac
     const [cookies] = useCookies()
 
     ///New Data
-    const [RemoveSubItem] = useState<string[]>([])
+    const [RemoveSubItem] = useState<number[]>([])
     const [ProductType, setProductType] = useState<string>(CategoriesSplit.splice(CategoriesSplit.length - 1, 1)[0])
     const [Categories, setCategories] = useState<Array<string>>(CategoriesSplit)
     const [MainName, setMainName] = useState<string>(props.ProductData.ProductName)
     const [Shipping, setShipping] = useState<string>(props.ProductData.ShippingLocation)
-    const [Children_Product] = useState<any>(props.ProductData.SubItem)
+    const [Children_Product] = useState<any[]>(props.ProductData.SubItem)
     const [AboutProduct, setAboutProduct] = useState<string>(props.ProductData.Description.join('\n'))
+    const [ProductStatus, setProductStatus] = useState<boolean>(props.ProductData.ProductStauts)
 
 
     ///Input Function
@@ -185,7 +186,7 @@ const ModifyProductDialog = (props: {Open: boolean, setOpen: React.Dispatch<Reac
                                     onClick={() => {ModifyProductFunction({Description: AboutProduct, ProductName: MainName, ShippingLocation: Shipping, id: props.ProductData.id,
                                                                            SubItem: Children_Product, Category: Categories.join('/') + '/'+ ProductType, Access_Token: cookies['access'], 
                                                                            RemoveImages: RemoveImages, RemoveSubItem: RemoveSubItem, RemoveDescriptionImages: RemoveDescriptionImages,
-                                                                           DescriptionImages: DescriptionImages, Images: Images}, props.setOpen)}}>                    
+                                                                           DescriptionImages: DescriptionImages, Images: Images, ProductStauts: ProductStatus}, props.setOpen)}}>                    
                                 {t("SellProduct.ConfirmModify")}
                             </Button>
                             <Button color='error' variant='contained' sx={{mt: '10px'}} onClick={() => console.log()}>

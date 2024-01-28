@@ -14,11 +14,7 @@ import BusinessManagementNavBar from './Component/AddComponect/Navbar/BusinessMa
 import UnauthorizedPage from './Component/Page/StatusPage/401Unauthorized';
 import TopNavBar from './Component/AddComponect/Navbar/TopNavBar';
 import SearchNavBar from './Component/AddComponect/Navbar/SearchNavBar';
-import BusinessManagementPage from './Component/Page/BusinessPage/BusinessManagementPage';
-import OrderManagementPage from './Component/Page/BusinessPage/OrderManagementPage';
-import ReturnManagementPage from './Component/Page/BusinessPage/ReturnManagementPage';
 import ReturnOrderPage from './Component/Page/ReturnOrderPage';
-import AnalysisMangementPage from './Component/Page/BusinessPage/AnalysisMangementPage';
 import ChatPage from './Component/Page/ChatPage';
 import StandardPage from './Component/Page/StandardProductPage';
 import AccountInformationPage from './Component/Page/AccountInformationPage';
@@ -32,6 +28,14 @@ import TermsofUsePage from './Component/Page/HelpingPage/TermsofUsePage';
 import { useTranslation } from 'react-i18next';
 import SuccessPaymentPage from './Component/Page/HelpingPage/SuccessPaymentPage';
 import PrivacyCenter from './Component/Page/SettingPage/PrivacyCenter';
+import ProductManagement from './Component/Page/BusinessPage/ProductManagement';
+import Dashboard from './Component/Page/BusinessPage/Dashboard';
+import NewProductPage from './Component/Page/BusinessPage/NewProductPage';
+import NewOrderPage from './Component/Page/BusinessPage/NewOrderPage';
+import AnalysisPage from './Component/Page/BusinessPage/AnalysisPage';
+import NewReturnPage from './Component/Page/BusinessPage/NewReturnPage';
+import CategoriesPage from './Component/Page/Categories/CategoriesPage';
+import CategoriesSubItem from './Component/Page/Categories/CategoriesSubItem';
 
 const GetPrivateUserData = gql`
 query PrivateUserData{
@@ -183,7 +187,7 @@ const App : React.FC = () =>{
 
   return(
     <Router>
-        <Routes>
+        <Routes >
           <Route>
             <Route path='/Payment/success' element={<SuccessPaymentPage/>}/>
           </Route>
@@ -207,11 +211,17 @@ const App : React.FC = () =>{
             <Route path="/PrivacyCenter" element={<PrivacyCenter UserData={data?.PrivateUserData} RefetchUserFunction={RefetchUserData}/>}/>
             <Route path='/Address' element={<AddressSetting/>}/>
           </Route>
-          <Route element={ManagementSystemRoute({loading: loading && !ready, data: data?.PrivateUserData})}>
-            <Route path='/Business' element={<BusinessManagementPage User={data?.PrivateUserData}/>}/>
-            <Route path='/Business/Orders' element={<OrderManagementPage/>}/>
-            <Route path='/Business/ReturnOrExchange' element={<ReturnManagementPage/>}/>
-            <Route path='/Business/Analysis' element={<AnalysisMangementPage/>}/>
+          <Route path='/Business/' element={ManagementSystemRoute({loading: loading && !ready, data: data?.PrivateUserData})}>
+            <Route path="Product" element={<ProductManagement User={data?.PrivateUserData}/>}/>
+            <Route path="Dashboard" element={<Dashboard/>}/>
+            <Route path="NewProduct" element={<NewProductPage/>}/>
+            <Route path="NewOrders" element={<NewOrderPage User={data?.PrivateUserData}/>}/>
+            <Route path="NewReturns" element={<NewReturnPage User={data?.PrivateUserData}/>}/>
+            <Route path="Analysis" element={<AnalysisPage/>}/>
+            <Route path="Categories/">
+              <Route path="" element={<CategoriesPage User={data?.PrivateUserData}/>}/>
+              <Route path=":Category" element={<CategoriesSubItem/>}/>
+            </Route>
           </Route>
         </Routes>
     </Router>

@@ -25,7 +25,7 @@ query ChatUserList{
 
 const ChatPage = () => {
     const [GetChatFunction] = useLazyQuery<{ChatRecord: any}>(GetChatData, {fetchPolicy: 'network-only'});
-    const [GetChatListFunction] = useLazyQuery<{ChatUserList: string}>(GetChatRecordList);
+    const [GetChatListFunction] = useLazyQuery<{ChatUserList: string}>(GetChatRecordList, {fetchPolicy: 'network-only'});
     const [ChatData, setChatData] = useState<{id: number, Date: string, Message: string, SenderName: string, Time: string, Type: string}[]>([]);
     const [ChatList, setChatList] = useState<{[Target: string]: {Date: string, Message: string, Time: string, Sender: string, Read: number}}>({})
     const [ChatCount, setChatCount] = useState<{Begin: number, End: number}>({Begin: 0, End: 15})  

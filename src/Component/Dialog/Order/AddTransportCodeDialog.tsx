@@ -11,7 +11,7 @@ mutation AddTransportCodeFunction($TransportCode: String!, $OrderID: Int!) {
 }
 `
 
-const AddTransportCodeDialog = (props: {ItemKey: {CodeKey: string|number, Change: Boolean}, onClose: Function, Refresh: Function, Change?: Boolean}) =>{
+const AddTransportCodeDialog = (props: {ItemKey: {CodeKey: number, Change: Boolean}, onClose: Function, Refresh: Function, Change?: Boolean}) =>{
     const [AddTransportCodeFunction] = useMutation<{AddTransportCodeFunction: {status: boolean}}>(AddTransportCode);
     const [TransportCode, setTransportCode] = useState<string>('');
     const {t} = useTranslation()

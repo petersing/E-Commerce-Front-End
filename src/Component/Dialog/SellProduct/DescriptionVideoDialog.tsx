@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, InputBase, Paper, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from '@mui/icons-material/Search';
-import { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 
@@ -37,7 +37,7 @@ const DescriptionVideoDialog = (props: {open: boolean, onclose: Function, VideoL
                 {
                     props.VideoList.map((video, code) => {
                         return(
-                            <>
+                            <React.Fragment key={code}>
                                 <div style={{display: 'flex', justifyContent: 'space-around'}}>
                                     <Typography sx={{mt: '15px', mb: '10px'}}>{`Video ${code+1} Code: ${video}`}</Typography>
                                     <IconButton onClick={() => DeleteVideo(code)}>
@@ -50,7 +50,7 @@ const DescriptionVideoDialog = (props: {open: boolean, onclose: Function, VideoL
                                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 />
                                 <Divider />
-                            </>         
+                            </React.Fragment>         
                         )
                     })
                 }

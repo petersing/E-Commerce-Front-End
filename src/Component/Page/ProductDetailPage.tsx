@@ -278,7 +278,7 @@ const DescriptionImagesAndVideos = (props: {DescriptionImages: string[], Descrip
 
     return(
         <>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                 {props.DescriptionVideos.map((item, index) => {
                     return(
                         <iframe key={index} style={{width: `${width*0.8}px`, height: `${width*0.8*0.5625}px` , objectFit: 'contain', marginBottom: '20px'}}

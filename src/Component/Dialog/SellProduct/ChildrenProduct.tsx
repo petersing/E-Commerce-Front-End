@@ -2,8 +2,9 @@ import { TextField, InputAdornment, Button, Dialog, DialogContent, DialogTitle, 
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { SubItem_Object } from "../../Public_Data/Interfaces";
 
-const ChildrenProduct = (props: {Product: any, setDisplay: Function, Display: boolean, subkey? : number, setsubkey : Function, RemoveList?: string[]}) => {
+const ChildrenProduct = (props: {Product: any[], setDisplay: Function, Display: boolean, subkey? : number, setsubkey : Function, RemoveList?: number[]}) => {
     const [Price, setPrice] = useState<number>(0)
     const [Name, setName] = useState<string>('')
     const [Quantity, setQuantity] = useState<number>(0)
@@ -45,7 +46,7 @@ const ChildrenProduct = (props: {Product: any, setDisplay: Function, Display: bo
 
     return (
         <Dialog open={props.Display} onClose={() => {props.setDisplay(false)}} maxWidth='sm' fullWidth>
-            <DialogTitle>{props.subkey ? t("SellProduct.ModifySubItem"): t("SellProduct.AddSubItem")}</DialogTitle>
+            <DialogTitle>{props.subkey != undefined ? t("SellProduct.ModifySubItem"): t("SellProduct.AddSubItem")}</DialogTitle>
             <DialogContent sx={{display: 'flex', flexDirection: 'column'}}>
                 {AlertContent && <Alert severity='warning' sx={{mb: '15px'}}>{AlertContent}</Alert>}
                 <TextField label={t("SellProduct.Price")}  sx={{mt: '20px'}} value={Price} onChange={(e) => setPrice(e.target.value ? parseInt(e.target.value): 0)} 

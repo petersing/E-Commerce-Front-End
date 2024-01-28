@@ -102,15 +102,26 @@ interface Full_Order_Object{
     Address: string,
 }
 
+interface SubItem_Object{
+    Name: string, 
+    Price: number, 
+    Quantity: number, 
+    Sell: number, 
+    Properties: {[keys: string]: string}, 
+    id: number
+}
+
 interface Management_Product_Object{
-    id: string|number,
+    id: number,
     Author: string,
     Description: string[], 
     Images: string[],
     DescriptionImages: string[],
+    DescriptionVideos: string[],
     ProductName: string, 
     ShippingLocation: string,
-    SubItem: {Name: string, Price: number, Quantity: number, Sell: number, Properties: {[keys: string]: string}, id: string|number}[],
+    SubItem: SubItem_Object[],
+    ProductStatus: boolean,
     Category: string
 }
 
@@ -126,7 +137,8 @@ interface Modify_Product_Object{
     DescriptionImages?: File[],
     RemoveDescriptionImages? : string[],
     RemoveImages?: string[],
-    RemoveSubItem?: string[],
+    RemoveSubItem?: number[],
+    ProductStatus: boolean
 }
 
 interface Seller_Order_List_Object{
@@ -140,6 +152,7 @@ interface Seller_Order_List_Object{
     id: number,
     Status: string,
     TransportCode: string,
+    isComplete: boolean,
     OrderList: {id: number, ProductTitle: string, OrderImage: string,  SubItem: {Name: string, Count: number, Price: number, Status: string, id: number}[]}[],
 }
 
@@ -149,6 +162,7 @@ interface ReturnItem{
     ReturnStatus: string,
     ReturnStatusState: string,
     ReturnTransportCode: string,
+    ErrorReason: string,
     id: number,
     SubItem: {Name: string, Count: number, Price: number},
     Order: {ProductTitle: string, OrderImage: string},
@@ -157,4 +171,4 @@ interface ReturnItem{
 
 
 export type {User_Object, Item_Object, Cart_Object, Publish_Product_Object, Product_Detail_Object, Product_Display_Object, Order_Object, Full_Order_Object,
-             Management_Product_Object, Modify_Product_Object, Seller_Order_List_Object, Order_SubList, ReturnItem, Address_Object}
+             Management_Product_Object, Modify_Product_Object, Seller_Order_List_Object, Order_SubList, ReturnItem, Address_Object, SubItem_Object}

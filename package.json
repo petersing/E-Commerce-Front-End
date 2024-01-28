@@ -10,6 +10,7 @@
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
     "@mui/styles": "^5.14.0",
+    "@mui/x-charts": "^6.0.0-alpha.12",
     "@stripe/stripe-js": "^1.54.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
@@ -26,6 +27,7 @@
     "i18next-http-backend": "^2.2.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
+    "react-beautiful-dnd": "^13.1.1",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
@@ -60,5 +62,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-beautiful-dnd": "^13.1.7"
   }
 }

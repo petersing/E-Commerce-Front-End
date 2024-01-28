@@ -1,6 +1,6 @@
 import { gql, useMutation } from '@apollo/client'
 import { Alert, Box, Button, Checkbox, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Switch, TextField } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const UpdateUserAds = gql`
@@ -9,7 +9,7 @@ mutation UpdateUserAds($Agreement: Boolean!, $ConsentGlobalAds: Boolean!, $Conse
 }
 `
 
-const ChangeAdsStatusDialog = (props: {Open: boolean, Onclose: Function, RefetchUserFunction: Function, AdsDb: {id: string, Agreement: boolean, ConsentGlobalAds: boolean, ConsentPersonalAds: boolean, ConsentThirdPartyAds: boolean}}) => {
+const ChangeAdsStatusDialog = (props: {Open: boolean, Onclose: Dispatch<SetStateAction<boolean>>, RefetchUserFunction: Function, AdsDb: {id: string, Agreement: boolean, ConsentGlobalAds: boolean, ConsentPersonalAds: boolean, ConsentThirdPartyAds: boolean}}) => {
     const [AgreeAds, setAgreeAds] = React.useState<boolean>(props.AdsDb.Agreement)
     const [ConsentAds, setConsentAds] = React.useState<boolean>(props.AdsDb.ConsentGlobalAds)
     const [ConsentAdsThirdParty, setConsentAdsThirdParty] = React.useState<boolean>(props.AdsDb.ConsentThirdPartyAds)
@@ -42,7 +42,7 @@ const ChangeAdsStatusDialog = (props: {Open: boolean, Onclose: Function, Refetch
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => UpdateUserAdsMutationCallback(AgreeAds, ConsentAds, ConsentAdsThirdParty)} variant='contained'>{t("AccountInformation.Apply")}</Button>
-                    <Button onClick={() => props.Onclose(null)} variant='contained'>{t("AccountInformation.Cancel")}</Button>
+                    <Button onClick={() => props.Onclose(false)} variant='contained'>{t("AccountInformation.Cancel")}</Button>
                 </DialogActions>
             </Dialog>
         </>

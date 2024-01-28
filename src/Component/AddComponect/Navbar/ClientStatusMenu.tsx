@@ -24,7 +24,7 @@ const ClientStatusMenu = (props: {user: User_Object}) => {
     const [OpenSellDialog, setOpenSellDialog] = useState<boolean>(false)
     const [Lang, setLang] = useCookies(['Language'])
     const [DataCount ,setDataCount] = useState<{Order: number, Cart: number, Chat: number}>({Order: 0, Cart: 0, Chat: 0})
-    const [GetDataCountFunction] = useLazyQuery<{DataCount: any}>(GetCount);
+    const [GetDataCountFunction] = useLazyQuery<{DataCount: any}>(GetCount, {fetchPolicy: 'no-cache'});
     const {t} = useTranslation();
 
     function Logout(){
@@ -87,7 +87,7 @@ const ClientStatusMenu = (props: {user: User_Object}) => {
                 }
 
                 {props.user.isSubscriber? 
-                  <MenuItem onClick={() => window.location.assign('/Business')}>
+                  <MenuItem onClick={() => window.location.assign('/Business/Dashboard')}>
                     <Typography textAlign="center">{t("NavBar.ManageBusiness")}</Typography>
                   </MenuItem>
                 : null}

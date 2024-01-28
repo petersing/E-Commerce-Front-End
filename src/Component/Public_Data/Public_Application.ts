@@ -47,7 +47,6 @@ const useChatsocket = (Data: {URL : string, Param?: {[keys: string]: any}}) => {
     const [Status, setStatus] = useState<string>('')
     const [, forceUpdate] = useReducer(x => x + 1, 0)
 
-
     useEffect(() =>{
         var NewSocket: WebSocket;
         if (Param?.Target!== '' && Param){

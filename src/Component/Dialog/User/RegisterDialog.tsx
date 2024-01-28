@@ -71,6 +71,10 @@ const RegisterDialog= (props: LoginRegisterDialogProps) =>{
         return (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/).test(email)
       }
 
+      function Check_Password_Valide(password: string): Boolean{
+        return (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/).test(password)
+      }
+
       return(
         <>
           <DialogContent >
@@ -83,6 +87,7 @@ const RegisterDialog= (props: LoginRegisterDialogProps) =>{
                        value={username} onChange={(res) => {setusername(res.target.value)}}/>
   
             <TextField sx={{marginBottom: '10px'}} margin="dense" id="name" label={t("LoginAndRegister.Password")} type="password" fullWidth variant="outlined" 
+                       error={!Check_Password_Valide(password)}
                        value={password} onChange={(res) => {setpassword(res.target.value)}}/>
   
             <TextField sx={{marginBottom: '10px'}} margin="dense" id="name" label={t("LoginAndRegister.ConfirmPassword")} type="password" fullWidth variant="outlined" 
